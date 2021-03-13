@@ -1,0 +1,182 @@
+/*
+* simple static site builder
+* - style-post.css
+*		- post specific styles
+* - @spire-signpost
+*/
+
+/* 
+* GRID 
+* - wrapper - post specific
+*		- add breadcrumbs to grid 
+*/
+div.wrapper {
+/*	display: grid;
+	grid-gap: 0;*/
+	grid-template-rows: 150px 50px auto 100px;
+	grid-template-areas:
+		"site-banner"
+		"breadcrumbs"
+		"site-content"
+		"footer";
+	/*margin: 15px 15px 0 15px;
+	padding: 0;
+	height: 98vh;*/
+}
+
+/* Breadcrumbs - trail for pages and posts */
+#breadcrumbs-list {
+	grid-area: breadcrumbs;
+	margin: 5px 0 0 20px;
+}
+
+ul.breadcrumbs {
+	margin-top: 10px;
+	padding: 0;
+	font-size: 0.8rem;
+}
+
+ul.breadcrumbs li {
+	display: inline;
+	padding: 0 5px;
+	border-left: 1px solid #cccccc;
+}
+
+ul.breadcrumbs li a {
+	color: #2b507d;
+	text-decoration: none;
+	font-weight: 500;
+}
+
+/*
+* GRID - main content
+*/
+.site-content {
+	grid-area: site-content;
+	display: grid;
+	grid-template-rows: fit-content(50%) fit-content(50%);
+	grid-template-areas:
+		"post-heading"
+		"content";
+}
+
+.post-heading {
+	grid-area: post-heading;
+	display: grid;
+	grid-template-columns: auto 325px;
+	grid-template-areas:
+		"post-details post-extras";
+}
+
+.post-details {
+	grid-area: post-details;
+	display: grid;
+	grid-template-rows: 70px auto;
+	grid-template-areas:
+		"post-header"
+		"post-snippet";	
+}
+
+.post-header {
+	grid-area: post-header;
+	margin: 10px 20px;
+}
+
+/* details - snippet */
+#snippet {
+	grid-area: post-snippet;
+	margin: 20px 25px 0 25px;
+}
+
+/*
+* GRID - post metadata 
+*/
+.post-extras {
+	grid-area: post-extras;
+}
+
+/* metadata group for post - title & list */
+#metadata {
+	margin: 40px 5% 25px 25px; 
+	padding: 20px 20px 10px 25px; 
+	border: 1px solid #dddddd; 
+}
+
+/* metadata list */
+ul.post-metadata {
+	margin: 0;
+	padding: 5px 5px 5px 0;
+}
+
+ul.post-metadata li {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 5px 0;
+	padding: 2px;
+	line-height: 1.5;
+	font-size: 0.9rem;
+	list-style-type: square;
+}
+
+.post-content {
+	padding: 25px; 
+}
+
+.post-content p {
+	margin: 15px 0;
+}
+ 
+/*
+* RESPONSIVE - media queries
+*/
+@media print, screen and (max-width: 915px) {
+	
+	div.wrapper {
+		grid-template-rows: 100px 50px auto 100px;
+	}
+
+	#breadcrumbs-list {
+		grid-area: breadcrumbs;
+		margin: 20px 0 0 20px;
+	}
+
+	.post-extras {
+		display: none;
+	}
+
+	.post-heading {
+		grid-template-columns: 1fr;
+		grid-template-areas:
+			"post-details";
+	}	
+
+	.post-header {
+		width: 90%;
+	}
+
+	.post-header h4 {
+		margin-top: 20px;
+	}
+
+	#snippet {
+		width: 60%;
+	}
+
+}
+
+@media print, screen and (max-width: 545px) {
+
+	#breadcrumbs-list {
+		display:none;	
+	}
+
+	.post-header h4 {
+		margin-top: 45px;
+	}
+
+	#snippet {
+		width: 80%;
+		margin-top: 25px;
+	}
+
+}
