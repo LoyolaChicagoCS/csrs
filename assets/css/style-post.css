@@ -170,13 +170,14 @@ ul.post-metadata li {
 		display:none;	
 	}
 
-	.post-header h4 {
-		margin-top: 45px;
+	.post-header {
+		width: 100%;
+		margin: 75px 0 0 0;
 	}
 
 	#snippet {
 		width: 80%;
-		margin-top: 25px;
+		margin-top: 75px;
 	}
 
 }
